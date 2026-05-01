@@ -1,0 +1,313 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - link "猫道場 Neko Dojo" [ref=e3] [cursor=pointer]:
+      - /url: "#"
+    - list [ref=e4]:
+      - listitem [ref=e5]:
+        - link "Our Cats" [ref=e6] [cursor=pointer]:
+          - /url: "#cats"
+      - listitem [ref=e7]:
+        - link "Menu" [ref=e8] [cursor=pointer]:
+          - /url: "#menu"
+      - listitem [ref=e9]:
+        - link "Atmosphere" [ref=e10] [cursor=pointer]:
+          - /url: "#experience"
+      - listitem [ref=e11]:
+        - link "Reviews" [ref=e12] [cursor=pointer]:
+          - /url: "#testimonials"
+      - listitem [ref=e13]:
+        - link "Visit Us" [ref=e14] [cursor=pointer]:
+          - /url: "#visit"
+  - generic [ref=e15]:
+    - generic [ref=e17]:
+      - generic [ref=e18]:
+        - generic [ref=e19]: 🏮 Now Open · 営業中
+        - heading "Welcome to Neko Dojo 猫 道 場" [level=1] [ref=e20]:
+          - text: Welcome to
+          - generic [ref=e21]: Neko Dojo
+          - generic [ref=e22]: 猫 道 場
+        - paragraph [ref=e23]: Step into our enchanted Japanese café where legendary samurai cats, stealthy ninja felines, and gentle civilian kitties await your company. Sip matcha, share stories, and let our cats steal your heart.
+        - generic [ref=e24]:
+          - link "🐾 Reserve a Seat" [ref=e25] [cursor=pointer]:
+            - /url: "#visit"
+          - link "Meet Our Cats" [ref=e26] [cursor=pointer]:
+            - /url: "#cats"
+        - generic [ref=e27]:
+          - generic [ref=e28]:
+            - generic [ref=e29]: "42"
+            - text: Resident Cats
+          - generic [ref=e30]:
+            - generic [ref=e31]: 5★
+            - text: Rating
+          - generic [ref=e32]:
+            - generic [ref=e33]: 8yr
+            - text: Established
+      - img [ref=e36]
+    - img [ref=e92]
+  - generic [ref=e95]:
+    - generic [ref=e96]: Neko Dojo
+    - generic [ref=e97]: ✦
+    - generic [ref=e98]: 猫道場
+    - generic [ref=e99]: ✦
+    - generic [ref=e100]: Cat Café
+    - generic [ref=e101]: ✦
+    - generic [ref=e102]: Tokyo Style
+    - generic [ref=e103]: ✦
+    - generic [ref=e104]: Matcha & Cats
+    - generic [ref=e105]: ✦
+    - generic [ref=e106]: 侍 猫
+    - generic [ref=e107]: ✦
+    - generic [ref=e108]: 忍者 猫
+    - generic [ref=e109]: ✦
+    - generic [ref=e110]: Neko Dojo
+    - generic [ref=e111]: ✦
+    - generic [ref=e112]: 猫道場
+    - generic [ref=e113]: ✦
+    - generic [ref=e114]: Cat Café
+    - generic [ref=e115]: ✦
+    - generic [ref=e116]: Tokyo Style
+    - generic [ref=e117]: ✦
+    - generic [ref=e118]: Matcha & Cats
+    - generic [ref=e119]: ✦
+    - generic [ref=e120]: 侍 猫
+    - generic [ref=e121]: ✦
+    - generic [ref=e122]: 忍者 猫
+    - generic [ref=e123]: ✦
+  - generic [ref=e125]:
+    - generic [ref=e126]:
+      - generic [ref=e127]: 🐱 Our Residents
+      - heading "Meet the Legendary Cats" [level=2] [ref=e128]
+      - generic [ref=e131]: ⚔️
+      - paragraph [ref=e133]: From fearsome warriors to stealthy shadows — all 42 of our cats are rescues with a unique backstory and personality. All want your love (and maybe your snacks).
+    - generic [ref=e134]:
+      - generic [ref=e135] [cursor=pointer]:
+        - img [ref=e137]
+        - generic [ref=e163]: Katsuro
+        - generic [ref=e164]: ⚔️ Samurai Lord
+        - paragraph [ref=e165]: The mightiest warrior of Neko Dojo. Katsuro defeated 99 mice before retiring to guard the café. His honor is unbreakable — unless you bring tuna.
+        - generic [ref=e166]: "Rank: Shogun"
+      - generic [ref=e167] [cursor=pointer]:
+        - img [ref=e169]
+        - generic [ref=e196]: Kage
+        - generic [ref=e197]: 🥷 Shadow Ninja
+        - paragraph [ref=e198]: You never see Kage coming. One moment the seat is empty — the next, a purring shadow is on your lap. Expert in the art of surprise cuddles and croissant theft.
+        - generic [ref=e199]: "Rank: Jōnin"
+      - generic [ref=e200] [cursor=pointer]:
+        - img [ref=e202]
+        - generic [ref=e237]: Yuki
+        - generic [ref=e238]: 🌸 Gentle Soul
+        - paragraph [ref=e239]: "Yuki sits next to anyone who seems sad and gently headbutts their worries away. Favorite hobby: napping in sunbeams and stealing warmth from your coffee mug."
+        - generic [ref=e240]: "Rank: Beloved"
+      - generic [ref=e241] [cursor=pointer]:
+        - img [ref=e243]
+        - generic [ref=e271]: Tōru
+        - generic [ref=e272]: 📜 Wise Scholar
+        - paragraph [ref=e273]: Tōru has studied ancient cat wisdom for 500 years. He'll knock your book off the table and sit on it while maintaining eye contact. He contains multitudes.
+        - generic [ref=e274]: "Rank: Onmyōji"
+  - generic [ref=e276]:
+    - generic [ref=e277]:
+      - generic [ref=e278]: 🍵 Our Menu
+      - heading "Crafted with Japanese Soul" [level=2] [ref=e279]
+      - generic [ref=e282]: 🌸
+    - generic [ref=e284]:
+      - generic [ref=e285]:
+        - generic [ref=e286]: 🍵
+        - generic [ref=e287]:
+          - generic [ref=e288]: Matcha Ceremony
+          - generic [ref=e289]: 抹茶の儀式
+        - paragraph [ref=e290]: Traditional stone-ground matcha prepared tableside. Paired with wagashi sweets shaped like our resident cats. A moment of perfect stillness.
+        - generic [ref=e291]: ¥850
+      - generic [ref=e292]:
+        - generic [ref=e293]: ☕
+        - generic [ref=e294]:
+          - generic [ref=e295]: Sakura Latte
+          - generic [ref=e296]: 桜ラテ
+        - paragraph [ref=e297]: Espresso crowned with cherry blossom foam art. Each cup features a different Neko Dojo cat character crafted in steamed milk by our baristas.
+        - generic [ref=e298]: ¥680
+      - generic [ref=e299]:
+        - generic [ref=e300]: 🍡
+        - generic [ref=e301]:
+          - generic [ref=e302]: Ninja Mochi Set
+          - generic [ref=e303]: 忍者餅セット
+        - paragraph [ref=e304]: Three mochi — black sesame, strawberry, and yuzu — served on a bamboo platter with a tiny Kage figurine. Too adorable to eat (but please do).
+        - generic [ref=e305]: ¥520
+      - generic [ref=e306]:
+        - generic [ref=e307]: 🍱
+        - generic [ref=e308]:
+          - generic [ref=e309]: Samurai Bento
+          - generic [ref=e310]: 武士弁当
+        - paragraph [ref=e311]: "A warrior's feast: onigiri, tamagoyaki, pickled vegetables, and miso soup — all arranged to honor Katsuro's legendary appetite for glory."
+        - generic [ref=e312]: ¥1,200
+  - generic [ref=e315]:
+    - generic [ref=e316]:
+      - generic [ref=e317]: 🏮 The Atmosphere
+      - heading "Step Into Another World" [level=2] [ref=e318]
+      - generic [ref=e321]: ⛩️
+      - list [ref=e322]:
+        - listitem [ref=e323]:
+          - generic [ref=e324]: 🏯
+          - generic [ref=e325]: Full Edo-period décor with shoji screens, tatami corners, and hanging scroll art featuring our cat legends
+        - listitem [ref=e326]:
+          - generic [ref=e327]: 🎵
+          - generic [ref=e328]: Original shamisen and koto soundtrack composed exclusively for Neko Dojo — peaceful, immersive, magical
+        - listitem [ref=e329]:
+          - generic [ref=e330]: 🐾
+          - generic [ref=e331]: All 42 cats are rescues with full veterinary care. You can discuss adoption — but they prefer ruling from here
+        - listitem [ref=e332]:
+          - generic [ref=e333]: 📸
+          - generic [ref=e334]: Dedicated photo corners with traditional Japanese props and patient cats (most of the time)
+        - listitem [ref=e335]:
+          - generic [ref=e336]: 🎎
+          - generic [ref=e337]: "Monthly themed events: Samurai Training Day, Ninja Hide-and-Seek, Scholar's Study Night"
+      - link "🏮 Plan Your Visit" [ref=e338] [cursor=pointer]:
+        - /url: "#visit"
+    - img [ref=e340]:
+      - generic [ref=e374]: 猫
+      - generic [ref=e382]: 猫
+      - generic [ref=e383]: 道
+      - generic [ref=e384]: 場
+  - generic [ref=e386]:
+    - generic [ref=e387]:
+      - generic [ref=e388]: 💬 Guest Reviews
+      - heading "Loved by Cat Devotees" [level=2] [ref=e389]
+      - generic [ref=e392]: 🐾
+    - generic [ref=e394]:
+      - generic [ref=e395]:
+        - text: "\""
+        - generic [ref=e396]: ★★★★★
+        - paragraph [ref=e397]: "\"I came for the matcha, I stayed for Katsuro. That samurai cat sat on my lap for two hours and stared at me with such gravitas I genuinely reconsidered my life choices. Absolutely transformative. 11/10.\""
+        - generic [ref=e398]:
+          - generic [ref=e399]: 🌸
+          - generic [ref=e400]:
+            - generic [ref=e401]: Aiko Tanaka
+            - generic [ref=e402]: Tokyo, Japan
+      - generic [ref=e403]:
+        - text: "\""
+        - generic [ref=e404]: ★★★★★
+        - paragraph [ref=e405]: "\"Kage the ninja cat appeared out of nowhere, stole my croissant without making a sound, and vanished. I have never been more impressed by anyone in my life. The Sakura Latte was also excellent.\""
+        - generic [ref=e406]:
+          - generic [ref=e407]: 🏯
+          - generic [ref=e408]:
+            - generic [ref=e409]: Marcus Webb
+            - generic [ref=e410]: London, UK
+      - generic [ref=e411]:
+        - text: "\""
+        - generic [ref=e412]: ★★★★★
+        - paragraph [ref=e413]: "\"Tōru knocked my manga off the table and sat on it, maintaining eye contact. He knew exactly what he was doing. The décor is gorgeous, the staff wonderful. My weekly sanctuary.\""
+        - generic [ref=e414]:
+          - generic [ref=e415]: 📜
+          - generic [ref=e416]:
+            - generic [ref=e417]: Priya Sharma
+            - generic [ref=e418]: Osaka, Japan
+  - generic [ref=e420]:
+    - generic [ref=e421]:
+      - generic [ref=e422]: 📍 Find Us
+      - heading "Come Visit the Dojo" [level=2] [ref=e423]
+      - generic [ref=e426]: ⛩️
+    - generic [ref=e428]:
+      - generic [ref=e429]:
+        - generic [ref=e430]:
+          - heading "🕐 Hours of Operation" [level=4] [ref=e431]
+          - list [ref=e432]:
+            - listitem [ref=e433]:
+              - generic [ref=e434]: Monday – Tuesday
+              - generic [ref=e435]: Closed · Training Day
+            - listitem [ref=e436]:
+              - generic [ref=e437]: Wednesday – Friday
+              - generic [ref=e438]: 11:00 – 21:00
+            - listitem [ref=e439]:
+              - generic [ref=e440]: Saturday
+              - generic [ref=e441]: 10:00 – 22:00
+            - listitem [ref=e442]:
+              - generic [ref=e443]: Sunday
+              - generic [ref=e444]: 10:00 – 20:00
+        - generic [ref=e445]:
+          - heading "📍 Location" [level=4] [ref=e446]
+          - paragraph [ref=e447]:
+            - text: 2-chome-12-8 Neko Alley
+            - text: Shibuya District
+            - text: Tokyo, Japan 150-0001
+            - strong [ref=e448]: 3 min walk from Shibuya Station (Exit A5)
+        - generic [ref=e449]:
+          - heading "📞 Reservations" [level=4] [ref=e450]
+          - paragraph [ref=e451]:
+            - text: Walk-ins welcome. Reservations recommended on weekends.
+            - text: "Entry: ¥600/hour · Menu items ordered separately."
+          - link "Book a Table" [ref=e452] [cursor=pointer]:
+            - /url: "#"
+      - img [ref=e455]:
+        - generic [ref=e471]: Neko Dojo
+        - generic [ref=e473]: S
+        - generic [ref=e474]: Shibuya
+        - generic [ref=e475]: Neko Ave
+        - generic [ref=e476]: Sakura St
+  - contentinfo [ref=e477]:
+    - generic [ref=e478]:
+      - generic [ref=e479]:
+        - generic [ref=e480]:
+          - generic [ref=e481]: 猫道場 Neko
+          - paragraph [ref=e482]: Where legendary cats meet excellent coffee. A sanctuary of whiskers, warrior spirits, and warm matcha in the heart of Tokyo.
+          - generic [ref=e483]:
+            - link "𝕏" [ref=e484] [cursor=pointer]:
+              - /url: "#"
+            - link "📸" [ref=e485] [cursor=pointer]:
+              - /url: "#"
+            - link "▶" [ref=e486] [cursor=pointer]:
+              - /url: "#"
+            - link "💬" [ref=e487] [cursor=pointer]:
+              - /url: "#"
+        - generic [ref=e488]:
+          - heading "Visit" [level=5] [ref=e489]
+          - list [ref=e490]:
+            - listitem [ref=e491]:
+              - link "Our Cats" [ref=e492] [cursor=pointer]:
+                - /url: "#cats"
+            - listitem [ref=e493]:
+              - link "The Menu" [ref=e494] [cursor=pointer]:
+                - /url: "#menu"
+            - listitem [ref=e495]:
+              - link "Atmosphere" [ref=e496] [cursor=pointer]:
+                - /url: "#experience"
+            - listitem [ref=e497]:
+              - link "Hours & Location" [ref=e498] [cursor=pointer]:
+                - /url: "#visit"
+            - listitem [ref=e499]:
+              - link "Reserve a Table" [ref=e500] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=e501]:
+          - heading "Explore" [level=5] [ref=e502]
+          - list [ref=e503]:
+            - listitem [ref=e504]:
+              - link "Cat Stories" [ref=e505] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e506]:
+              - link "Events Calendar" [ref=e507] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e508]:
+              - link "Adoption Info" [ref=e509] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e510]:
+              - link "Press & Media" [ref=e511] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e512]:
+              - link "Gift Cards" [ref=e513] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=e514]:
+          - heading "Legal" [level=5] [ref=e515]
+          - list [ref=e516]:
+            - listitem [ref=e517]:
+              - link "Privacy Policy" [ref=e518] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e519]:
+              - link "Terms of Service" [ref=e520] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e521]:
+              - link "Cat Welfare Policy" [ref=e522] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e523]:
+              - link "Accessibility" [ref=e524] [cursor=pointer]:
+                - /url: "#"
+      - generic [ref=e525]:
+        - paragraph [ref=e526]: © 2026 Neko Dojo · All rights reserved · 猫道場
+        - generic [ref=e527]: 猫 道 場 侍 忍
+        - paragraph [ref=e528]: Made with 🐾 in Tokyo

@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neko Dojo | 猫道場 — Japanese Cat Café</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&family=Noto+Serif+JP:wght@400;600;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --red:#C0392B;--red2:#E74C3C;--gold:#D4AF37;--gold2:#F4D03F;
+  --pink:#FFB7C5;--pink2:#FF8FAB;
+  --dark:#0A0A14;--dark2:#12122A;--ink:#1C1C3A;
+  --white:#FEFEFE;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'M PLUS Rounded 1c',sans-serif;background:var(--dark);color:var(--white);overflow-x:hidden;}
+
+/* SAKURA */
+#sakura{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:999;overflow:hidden;}
+.petal{position:absolute;border-radius:0 50% 0 50%;animation:fall linear infinite;}
+@keyframes fall{0%{transform:translateY(-20px) rotate(0deg) translateX(0);opacity:.8;}
+50%{transform:translateY(50vh) rotate(180deg) translateX(30px);opacity:.5;}
+100%{transform:translateY(105vh) rotate(360deg) translateX(-20px);opacity:.1;}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:1rem 2rem;
+  display:flex;justify-content:space-between;align-items:center;
+  background:rgba(10,10,20,.88);backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(212,175,55,.2);transition:all .3s;}
+.logo{font-family:'Noto Serif JP',serif;font-size:1.4rem;font-weight:900;
+  color:var(--gold);text-decoration:none;letter-spacing:2px;}
+.logo span{color:var(--pink);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--white);text-decoration:none;font-size:.875rem;
+  letter-spacing:1px;font-weight:700;transition:color .3s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{background:var(--red)!important;color:var(--white)!important;
+  padding:.45rem 1.3rem;border-radius:25px;}
+.nav-cta:hover{background:var(--red2)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--white);transition:.3s;}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+  background:radial-gradient(ellipse at 20% 50%,rgba(192,57,43,.12) 0%,transparent 55%),
+    radial-gradient(ellipse at 80% 20%,rgba(255,183,197,.08) 0%,transparent 50%),var(--dark);}
+.hero-grid-bg{position:absolute;inset:0;
+  background-image:repeating-linear-gradient(45deg,transparent,transparent 50px,rgba(212,175,55,.025) 50px,rgba(212,175,55,.025) 51px);}
+.hero-inner{display:flex;align-items:center;gap:4rem;max-width:1200px;
+  padding:7rem 2rem 5rem;z-index:10;width:100%;}
+.hero-text{flex:1;min-width:0;}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(212,175,55,.12);border:1px solid rgba(212,175,55,.4);
+  color:var(--gold);padding:.35rem 1.1rem;border-radius:20px;
+  font-size:.75rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:1.5rem;
+  animation:badgeglow 2.5s ease-in-out infinite;}
+@keyframes badgeglow{0%,100%{box-shadow:0 0 6px rgba(212,175,55,.3);}
+  50%{box-shadow:0 0 22px rgba(212,175,55,.65);}}
+.hero-title{font-family:'Noto Serif JP',serif;font-size:clamp(2.4rem,5vw,4.5rem);
+  font-weight:900;line-height:1.15;margin-bottom:.5rem;}
+.hero-title .t1{color:var(--white);}
+.hero-title .t2{color:var(--red);display:block;}
+.hero-title .t3{color:var(--gold);display:block;font-size:.6em;letter-spacing:6px;margin-top:.6rem;}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,.65);margin:1.5rem 0 2.5rem;line-height:1.8;max-width:470px;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-p{background:var(--red);color:#fff;padding:.8rem 2rem;border:none;
+  border-radius:30px;font-family:inherit;font-size:1rem;font-weight:700;
+  cursor:pointer;text-decoration:none;display:inline-block;
+  transition:all .3s;box-shadow:0 4px 22px rgba(192,57,43,.4);}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(192,57,43,.6);background:var(--red2);}
+.btn-s{background:transparent;color:var(--gold);padding:.8rem 2rem;
+  border:2px solid var(--gold);border-radius:30px;font-family:inherit;
+  font-size:1rem;font-weight:700;cursor:pointer;text-decoration:none;
+  display:inline-block;transition:all .3s;}
+.btn-s:hover{background:var(--gold);color:var(--dark);transform:translateY(-3px);}
+.hero-stats{display:flex;gap:2.5rem;margin-top:3rem;}
+.stat-num{font-size:2rem;font-weight:900;color:var(--gold);display:block;}
+.stat-lbl{font-size:.7rem;color:rgba(255,255,255,.45);letter-spacing:1.5px;text-transform:uppercase;}
+.hero-visual{flex:1;display:flex;justify-content:center;align-items:center;position:relative;}
+.hero-glow{position:absolute;width:380px;height:380px;
+  background:radial-gradient(circle,rgba(192,57,43,.18) 0%,transparent 68%);
+  border-radius:50%;animation:hpulse 3s ease-in-out infinite;}
+@keyframes hpulse{0%,100%{transform:scale(1);opacity:.5;}50%{transform:scale(1.08);opacity:.85;}}
+
+/* LANTERNS */
+.lanterns{position:absolute;inset:0;pointer-events:none;}
+.lantern{position:absolute;display:flex;flex-direction:column;align-items:center;
+  transform-origin:top center;animation:sway 4s ease-in-out infinite;}
+.l-string{width:1px;background:rgba(212,175,55,.45);}
+.l-body{border-radius:50% / 40%;
+  box-shadow:0 0 18px rgba(230,74,50,.75),inset 0 0 10px rgba(255,200,100,.25);}
+.l-glow{border-radius:50%;margin-top:-4px;}
+@keyframes sway{0%,100%{transform:rotate(-6deg);}50%{transform:rotate(6deg);}}
+
+/* WAVE */
+.wave-divider svg{display:block;}
+
+/* SCROLL BANNER */
+.scroll-banner{background:var(--red);padding:.7rem 0;overflow:hidden;white-space:nowrap;}
+.scroll-track{display:inline-flex;animation:scrollleft 22s linear infinite;}
+.s-item{font-size:.75rem;letter-spacing:3px;text-transform:uppercase;font-weight:700;margin:0 2rem;color:rgba(255,255,255,.9);}
+.s-sep{color:rgba(255,255,255,.4);margin:0 .8rem;}
+@keyframes scrollleft{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+/* SECTIONS */
+section{padding:6rem 2rem;}
+.container{max-width:1200px;margin:0 auto;}
+.sec-head{text-align:center;margin-bottom:4rem;}
+.sec-tag{display:inline-block;font-size:.72rem;letter-spacing:4px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1rem;font-weight:700;}
+.sec-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.9rem,4vw,2.9rem);font-weight:900;line-height:1.25;}
+.sec-title .hl{color:var(--red);}
+.divider{display:flex;align-items:center;justify-content:center;gap:1rem;margin:1.3rem 0;}
+.div-line{width:55px;height:1px;background:var(--gold);opacity:.45;}
+.sec-sub{color:rgba(255,255,255,.5);max-width:580px;margin:0 auto;font-size:.9rem;line-height:1.75;}
+
+/* FADE IN */
+.fi{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+.fi.vis{opacity:1;transform:translateY(0);}
+
+/* CAT SECTION */
+#cats{background:var(--dark2);position:relative;overflow:hidden;}
+#cats::before{content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23D4AF37' fill-opacity='0.035'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");}
+.cats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:2rem;}
+.cat-card{background:rgba(255,255,255,.028);border:1px solid rgba(212,175,55,.13);
+  border-radius:20px;padding:2.5rem 2rem;text-align:center;
+  transition:all .4s cubic-bezier(.175,.885,.32,1.275);cursor:pointer;position:relative;overflow:hidden;}
+.cat-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;
+  background:linear-gradient(90deg,var(--red),var(--gold));opacity:0;transition:opacity .3s;}
+.cat-card:hover{transform:translateY(-12px);border-color:rgba(212,175,55,.45);
+  background:rgba(255,255,255,.055);
+  box-shadow:0 22px 65px rgba(0,0,0,.4),0 0 35px rgba(212,175,55,.08);}
+.cat-card:hover::before{opacity:1;}
+.cat-art{width:160px;height:160px;margin:0 auto 1.5rem;}
+.cat-name{font-family:'Noto Serif JP',serif;font-size:1.45rem;font-weight:900;color:var(--gold);margin-bottom:.3rem;}
+.cat-rank{font-size:.75rem;color:var(--red);letter-spacing:3px;text-transform:uppercase;font-weight:700;margin-bottom:1rem;}
+.cat-desc{font-size:.875rem;color:rgba(255,255,255,.58);line-height:1.75;}
+.cat-badge{display:inline-block;margin-top:1rem;background:rgba(192,57,43,.13);
+  border:1px solid rgba(192,57,43,.38);color:var(--pink);
+  padding:.28rem 1rem;border-radius:20px;font-size:.72rem;letter-spacing:2px;}
+
+/* TAIL / BLINK ANIMATIONS */
+.tail{animation:tailwave 2s ease-in-out infinite;transform-origin:80% 90%;}
+@keyframes tailwave{0%,100%{transform:rotate(-8deg);}50%{transform:rotate(8deg);}}
+.eyes{animation:blink 4s ease-in-out infinite;}
+@keyframes blink{0%,88%,100%{transform:scaleY(1);}93%{transform:scaleY(.08);}}
+.float{animation:floatanim 5s ease-in-out infinite;}
+@keyframes floatanim{0%,100%{transform:translateY(0);}50%{transform:translateY(-18px);}}
+
+/* MENU */
+#menu{background:var(--dark);}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1.8rem;}
+.menu-card{background:linear-gradient(135deg,rgba(255,255,255,.048) 0%,rgba(255,255,255,.018) 100%);
+  border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:2rem;
+  transition:all .3s;display:flex;flex-direction:column;gap:.9rem;}
+.menu-card:hover{transform:translateY(-8px);border-color:rgba(212,175,55,.28);
+  box-shadow:0 16px 42px rgba(0,0,0,.32);}
+.m-icon{font-size:2.8rem;}
+.m-name{font-size:1.2rem;font-weight:800;}
+.m-jp{font-family:'Noto Serif JP',serif;font-size:.82rem;color:var(--gold);letter-spacing:2px;}
+.m-desc{font-size:.85rem;color:rgba(255,255,255,.52);line-height:1.7;}
+.m-price{font-size:1.3rem;font-weight:900;color:var(--red);margin-top:auto;}
+
+/* EXPERIENCE */
+#experience{background:var(--ink);}
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.exp-feats{list-style:none;display:flex;flex-direction:column;gap:1rem;margin:1.5rem 0 2rem;}
+.exp-feats li{display:flex;align-items:flex-start;gap:.85rem;font-size:.92rem;
+  color:rgba(255,255,255,.72);line-height:1.65;}
+.f-icon{color:var(--gold);font-size:1.15rem;flex-shrink:0;margin-top:2px;}
+.exp-scene{display:flex;justify-content:center;align-items:center;}
+
+/* TESTIMONIALS */
+#testimonials{background:var(--dark2);}
+.test-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:2rem;}
+.test-card{background:rgba(255,255,255,.028);border:1px solid rgba(212,175,55,.1);
+  border-radius:16px;padding:2rem;transition:all .3s;position:relative;}
+.test-card:hover{transform:translateY(-6px);border-color:rgba(212,175,55,.28);}
+.test-card::before{content:'"';position:absolute;top:-12px;left:18px;
+  font-size:5rem;color:var(--red);font-family:serif;line-height:1;opacity:.45;}
+.stars{color:var(--gold);font-size:.95rem;margin-bottom:1rem;letter-spacing:2px;}
+.test-txt{font-size:.9rem;color:rgba(255,255,255,.7);line-height:1.82;
+  margin-bottom:1.5rem;font-style:italic;}
+.test-author{display:flex;align-items:center;gap:1rem;}
+.t-avatar{width:44px;height:44px;border-radius:50%;
+  background:linear-gradient(135deg,var(--red),var(--gold));
+  display:flex;align-items:center;justify-content:center;font-size:1.25rem;}
+.t-name{font-weight:800;font-size:.9rem;}
+.t-loc{font-size:.72rem;color:rgba(255,255,255,.38);margin-top:2px;}
+
+/* VISIT */
+#visit{background:var(--dark);}
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.info-card{background:rgba(255,255,255,.028);border:1px solid rgba(212,175,55,.13);
+  border-radius:14px;padding:1.8rem;margin-bottom:1.4rem;}
+.info-card h4{font-family:'Noto Serif JP',serif;font-size:1rem;color:var(--gold);
+  margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;}
+.hours{list-style:none;display:flex;flex-direction:column;gap:.45rem;}
+.hours li{display:flex;justify-content:space-between;font-size:.875rem;
+  color:rgba(255,255,255,.65);padding:.35rem 0;border-bottom:1px solid rgba(255,255,255,.05);}
+.hours li:last-child{border-bottom:none;}
+.hours .day{font-weight:700;}
+.map-wrap{background:var(--ink);border:1px solid rgba(212,175,55,.13);
+  border-radius:16px;overflow:hidden;}
+
+/* FOOTER */
+footer{background:#05050F;border-top:1px solid rgba(212,175,55,.13);padding:4rem 2rem 2rem;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+.f-brand{font-family:'Noto Serif JP',serif;font-size:1.9rem;font-weight:900;color:var(--gold);margin-bottom:1rem;}
+.f-brand span{color:var(--pink);}
+.f-tagline{font-size:.85rem;color:rgba(255,255,255,.42);line-height:1.75;margin-bottom:1.5rem;}
+.socials{display:flex;gap:.7rem;}
+.soc-btn{width:38px;height:38px;border:1px solid rgba(255,255,255,.14);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:.95rem;
+  text-decoration:none;transition:all .3s;}
+.soc-btn:hover{border-color:var(--gold);background:rgba(212,175,55,.1);transform:translateY(-3px);}
+.f-col h5{font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);
+  margin-bottom:1.4rem;font-weight:700;}
+.f-links{list-style:none;display:flex;flex-direction:column;gap:.7rem;}
+.f-links a{color:rgba(255,255,255,.45);text-decoration:none;font-size:.855rem;transition:color .3s;}
+.f-links a:hover{color:var(--white);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;
+  padding-top:2rem;border-top:1px solid rgba(255,255,255,.05);}
+.footer-bottom p{font-size:.78rem;color:rgba(255,255,255,.28);}
+.f-jp{font-family:'Noto Serif JP',serif;font-size:1.4rem;color:rgba(212,175,55,.18);letter-spacing:7px;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-inner{flex-direction:column;text-align:center;padding-top:8rem;}
+  .hero-btns{justify-content:center;}
+  .hero-stats{justify-content:center;}
+  .hero-sub{margin-left:auto;margin-right:auto;}
+  .exp-grid,.visit-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:640px){
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .footer-grid{grid-template-columns:1fr;}
+  .footer-bottom{flex-direction:column;gap:.8rem;text-align:center;}
+  .hero-visual{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- SAKURA -->
+<div id="sakura"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="logo">猫道場 <span>Neko Dojo</span></a>
+  <ul class="nav-links">
+    <li><a href="#cats">Our Cats</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#experience">Atmosphere</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#visit" class="nav-cta">Visit Us</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+
+  <!-- Lanterns -->
+  <div class="lanterns">
+    <div class="lantern" style="left:4%;top:55px;animation-duration:3.2s;animation-delay:0s;">
+      <div class="l-string" style="height:45px;"></div>
+      <div class="l-body" style="width:30px;height:50px;background:radial-gradient(ellipse,#E74C3C 0%,#C0392B 60%,#8E1A0E 100%);"></div>
+      <div class="l-glow" style="width:44px;height:18px;background:radial-gradient(ellipse,rgba(230,74,50,.45) 0%,transparent 70%);"></div>
+    </div>
+    <div class="lantern" style="left:14%;top:35px;animation-duration:4.1s;animation-delay:.6s;">
+      <div class="l-string" style="height:62px;"></div>
+      <div class="l-body" style="width:22px;height:36px;background:radial-gradient(ellipse,#F39C12 0%,#D68910 60%,#9A6A00 100%);"></div>
+      <div class="l-glow" style="width:36px;height:14px;background:radial-gradient(ellipse,rgba(243,156,18,.4) 0%,transparent 70%);"></div>
+    </div>
+    <div class="lantern" style="right:6%;top:48px;animation-duration:3.7s;animation-delay:1.1s;">
+      <div class="l-string" style="height:52px;"></div>
+      <div class="l-body" style="width:30px;height:50px;background:radial-gradient(ellipse,#E74C3C 0%,#C0392B 60%,#8E1A0E 100%);"></div>
+      <div class="l-glow" style="width:44px;height:18px;background:radial-gradient(ellipse,rgba(230,74,50,.45) 0%,transparent 70%);"></div>
+    </div>
+    <div class="lantern" style="right:18%;top:28px;animation-duration:4.6s;animation-delay:1.8s;">
+      <div class="l-string" style="height:42px;"></div>
+      <div class="l-body" style="width:24px;height:40px;background:radial-gradient(ellipse,#E74C3C 0%,#C0392B 60%,#8E1A0E 100%);"></div>
+      <div class="l-glow" style="width:38px;height:15px;background:radial-gradient(ellipse,rgba(230,74,50,.4) 0%,transparent 70%);"></div>
+    </div>
+  </div>
+
+  <div class="hero-inner">
+    <!-- TEXT -->
+    <div class="hero-text fi">
+      <div class="hero-badge">🏮 Now Open &nbsp;·&nbsp; 営業中</div>
+      <h1 class="hero-title">
+        <span class="t1">Welcome to</span>
+        <span class="t2">Neko Dojo</span>
+        <span class="t3">猫 道 場</span>
+      </h1>
+      <p class="hero-sub">
+        Step into our enchanted Japanese café where legendary samurai cats,
+        stealthy ninja felines, and gentle civilian kitties await your company.
+        Sip matcha, share stories, and let our cats steal your heart.
+      </p>
+      <div class="hero-btns">
+        <a href="#visit" class="btn-p">🐾 Reserve a Seat</a>
+        <a href="#cats" class="btn-s">Meet Our Cats</a>
+      </div>
+      <div class="hero-stats">
+        <div><span class="stat-num">42</span><span class="stat-lbl">Resident Cats</span></div>
+        <div><span class="stat-num">5★</span><span class="stat-lbl">Rating</span></div>
+        <div><span class="stat-num">8yr</span><span class="stat-lbl">Established</span></div>
+      </div>
+    </div>
+
+    <!-- HERO VISUAL — Samurai Cat SVG -->
+    <div class="hero-visual">
+      <div class="hero-glow"></div>
+      <svg class="float" width="310" height="370" viewBox="0 0 310 370" xmlns="http://www.w3.org/2000/svg">
+        <!-- Body -->
+        <ellipse cx="155" cy="272" rx="78" ry="88" fill="#E8954A"/>
+        <!-- Armor chest -->
+        <ellipse cx="155" cy="268" rx="53" ry="63" fill="#8B0000"/>
+        <ellipse cx="155" cy="268" rx="38" ry="48" fill="#C0392B"/>
+        <line x1="155" y1="220" x2="155" y2="335" stroke="#8B0000" stroke-width="2"/>
+        <line x1="117" y1="245" x2="193" y2="245" stroke="#8B0000" stroke-width="1.5"/>
+        <line x1="112" y1="265" x2="198" y2="265" stroke="#8B0000" stroke-width="1.5"/>
+        <line x1="117" y1="285" x2="193" y2="285" stroke="#8B0000" stroke-width="1.5"/>
+        <rect x="137" y="218" width="36" height="6" rx="3" fill="#D4AF37"/>
+        <!-- Pauldrons -->
+        <ellipse cx="90" cy="242" rx="33" ry="19" fill="#8B0000"/>
+        <ellipse cx="220" cy="242" rx="33" ry="19" fill="#8B0000"/>
+        <ellipse cx="90" cy="242" rx="25" ry="13" fill="#C0392B"/>
+        <ellipse cx="220" cy="242" rx="25" ry="13" fill="#C0392B"/>
+        <ellipse cx="90" cy="242" rx="25" ry="13" fill="none" stroke="#D4AF37" stroke-width="1.5"/>
+        <ellipse cx="220" cy="242" rx="25" ry="13" fill="none" stroke="#D4AF37" stroke-width="1.5"/>
+        <!-- Head -->
+        <ellipse cx="155" cy="140" rx="72" ry="68" fill="#E8954A"/>
+        <!-- Kabuto helmet -->
+        <ellipse cx="155" cy="114" rx="70" ry="40" fill="#2A2A2A"/>
+        <ellipse cx="155" cy="114" rx="62" ry="33" fill="#383838"/>
+        <!-- Helmet wings -->
+        <path d="M85,100 C58,80 48,60 68,55 C83,53 93,70 93,96 Z" fill="#8B0000"/>
+        <path d="M225,100 C252,80 262,60 242,55 C227,53 217,70 217,96 Z" fill="#8B0000"/>
+        <!-- Helmet crest -->
+        <rect x="147" y="74" width="16" height="36" rx="3" fill="#D4AF37"/>
+        <polygon points="155,53 145,78 165,78" fill="#D4AF37"/>
+        <!-- Face guard -->
+        <rect x="120" y="152" width="70" height="28" rx="5" fill="#2A2A2A"/>
+        <rect x="126" y="155" width="58" height="22" rx="3" fill="#383838"/>
+        <rect x="130" y="159" width="50" height="3.5" rx="2" fill="#2A2A2A" opacity=".7"/>
+        <rect x="130" y="166" width="50" height="3.5" rx="2" fill="#2A2A2A" opacity=".7"/>
+        <!-- Ears -->
+        <polygon points="97,96 84,60 114,84" fill="#E8954A"/>
+        <polygon points="213,96 226,60 196,84" fill="#E8954A"/>
+        <polygon points="100,93 90,67 112,84" fill="#FFB0C0"/>
+        <polygon points="210,93 220,67 198,84" fill="#FFB0C0"/>
+        <!-- Eyes -->
+        <g class="eyes">
+          <ellipse cx="130" cy="144" rx="17" ry="19" fill="#1A1A1A"/>
+          <ellipse cx="180" cy="144" rx="17" ry="19" fill="#1A1A1A"/>
+          <ellipse cx="130" cy="144" rx="13" ry="15" fill="#FF6B35"/>
+          <ellipse cx="180" cy="144" rx="13" ry="15" fill="#FF6B35"/>
+          <ellipse cx="130" cy="144" rx="8" ry="10" fill="#0A0A0A"/>
+          <ellipse cx="180" cy="144" rx="8" ry="10" fill="#0A0A0A"/>
+        </g>
+        <ellipse cx="124" cy="138" rx="4" ry="4" fill="white"/>
+        <ellipse cx="174" cy="138" rx="4" ry="4" fill="white"/>
+        <ellipse cx="134" cy="150" rx="2" ry="2" fill="white" opacity=".5"/>
+        <ellipse cx="184" cy="150" rx="2" ry="2" fill="white" opacity=".5"/>
+        <!-- Nose -->
+        <polygon points="155,162 150,168 160,168" fill="#FF9999"/>
+        <!-- Whiskers -->
+        <line x1="108" y1="165" x2="145" y2="167" stroke="rgba(255,255,255,.55)" stroke-width="1.5"/>
+        <line x1="108" y1="171" x2="145" y2="170" stroke="rgba(255,255,255,.55)" stroke-width="1.5"/>
+        <line x1="165" y1="167" x2="202" y2="165" stroke="rgba(255,255,255,.55)" stroke-width="1.5"/>
+        <line x1="165" y1="170" x2="202" y2="171" stroke="rgba(255,255,255,.55)" stroke-width="1.5"/>
+        <!-- Katana -->
+        <rect x="212" y="184" width="5.5" height="125" rx="3" fill="#C8C8C8" transform="rotate(14 212 184)"/>
+        <rect x="208" y="180" width="13" height="19" rx="4" fill="#D4AF37"/>
+        <rect x="204" y="174" width="21" height="9" rx="5" fill="#8B0000"/>
+        <!-- Tail -->
+        <path class="tail" d="M225 330 Q272 295 278 248 Q282 208 260 198 Q247 194 244 208 Q250 222 244 258 Q237 295 218 325 Z" fill="#E8954A"/>
+        <path class="tail" d="M225 330 Q269 297 274 250 Q277 212 258 203 Q248 200 246 211 Q250 223 246 257 Q240 293 220 323 Z" fill="#D4872E"/>
+        <!-- Feet -->
+        <ellipse cx="126" cy="356" rx="28" ry="14" fill="#E8954A"/>
+        <ellipse cx="184" cy="356" rx="28" ry="14" fill="#E8954A"/>
+        <ellipse cx="115" cy="359" rx="6" ry="4.5" fill="#FF9999"/>
+        <ellipse cx="126" cy="363" rx="6" ry="4.5" fill="#FF9999"/>
+        <ellipse cx="137" cy="359" rx="6" ry="4.5" fill="#FF9999"/>
+        <ellipse cx="173" cy="359" rx="6" ry="4.5" fill="#FF9999"/>
+        <ellipse cx="184" cy="363" rx="6" ry="4.5" fill="#FF9999"/>
+        <ellipse cx="195" cy="359" rx="6" ry="4.5" fill="#FF9999"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Wave -->
+  <div class="wave-divider" style="position:absolute;bottom:0;left:0;width:100%;">
+    <svg viewBox="0 0 1440 72" preserveAspectRatio="none" style="width:100%;height:72px;display:block;">
+      <path d="M0,36 C360,72 1080,0 1440,36 L1440,72 L0,72 Z" fill="#12122A"/>
+    </svg>
+  </div>
+</section>
+
+<!-- SCROLL BANNER -->
+<div class="scroll-banner">
+  <div class="scroll-track">
+    <span class="s-item">Neko Dojo</span><span class="s-sep">✦</span>
+    <span class="s-item">猫道場</span><span class="s-sep">✦</span>
+    <span class="s-item">Cat Café</span><span class="s-sep">✦</span>
+    <span class="s-item">Tokyo Style</span><span class="s-sep">✦</span>
+    <span class="s-item">Matcha & Cats</span><span class="s-sep">✦</span>
+    <span class="s-item">侍 猫</span><span class="s-sep">✦</span>
+    <span class="s-item">忍者 猫</span><span class="s-sep">✦</span>
+    <span class="s-item">Neko Dojo</span><span class="s-sep">✦</span>
+    <span class="s-item">猫道場</span><span class="s-sep">✦</span>
+    <span class="s-item">Cat Café</span><span class="s-sep">✦</span>
+    <span class="s-item">Tokyo Style</span><span class="s-sep">✦</span>
+    <span class="s-item">Matcha & Cats</span><span class="s-sep">✦</span>
+    <span class="s-item">侍 猫</span><span class="s-sep">✦</span>
+    <span class="s-item">忍者 猫</span><span class="s-sep">✦</span>
+  </div>
+</div>
+
+<!-- CATS SECTION -->
+<section id="cats">
+<div class="container">
+  <div class="sec-head fi">
+    <span class="sec-tag">🐱 Our Residents</span>
+    <h2 class="sec-title">Meet the <span class="hl">Legendary Cats</span></h2>
+    <div class="divider"><div class="div-line"></div><span>⚔️</span><div class="div-line"></div></div>
+    <p class="sec-sub">From fearsome warriors to stealthy shadows — all 42 of our cats are rescues with a unique backstory and personality. All want your love (and maybe your snacks).</p>
+  </div>
+
+  <div class="cats-grid">
+
+    <!-- SAMURAI -->
+    <div class="cat-card fi">
+      <div class="cat-art">
+        <svg width="160" height="160" viewBox="0 0 160 160">
+          <ellipse cx="80" cy="112" rx="44" ry="38" fill="#E8954A"/>
+          <ellipse cx="80" cy="110" rx="30" ry="28" fill="#C0392B"/>
+          <line x1="80" y1="84" x2="80" y2="148" stroke="#8B0000" stroke-width="1.5"/>
+          <line x1="52" y1="102" x2="108" y2="102" stroke="#8B0000" stroke-width="1"/>
+          <line x1="50" y1="116" x2="110" y2="116" stroke="#8B0000" stroke-width="1"/>
+          <ellipse cx="80" cy="60" rx="34" ry="32" fill="#E8954A"/>
+          <ellipse cx="80" cy="47" rx="32" ry="21" fill="#2C2C2C"/>
+          <ellipse cx="80" cy="47" rx="26" ry="16" fill="#383838"/>
+          <polygon points="50,46 41,22 60,38" fill="#E8954A"/>
+          <polygon points="110,46 119,22 100,38" fill="#E8954A"/>
+          <polygon points="52,44 44,26 60,37" fill="#FF9999"/>
+          <polygon points="108,44 116,26 100,37" fill="#FF9999"/>
+          <rect x="74" y="27" width="12" height="18" rx="2" fill="#D4AF37"/>
+          <polygon points="80,15 73,30 87,30" fill="#D4AF37"/>
+          <g class="eyes">
+            <ellipse cx="66" cy="63" rx="10" ry="11" fill="#1A1A1A"/>
+            <ellipse cx="94" cy="63" rx="10" ry="11" fill="#1A1A1A"/>
+            <ellipse cx="66" cy="63" rx="7" ry="8" fill="#FF6B35"/>
+            <ellipse cx="94" cy="63" rx="7" ry="8" fill="#FF6B35"/>
+            <ellipse cx="66" cy="63" rx="4" ry="5" fill="#0A0A0A"/>
+            <ellipse cx="94" cy="63" rx="4" ry="5" fill="#0A0A0A"/>
+          </g>
+          <ellipse cx="62" cy="59" rx="2.5" ry="2.5" fill="white"/>
+          <ellipse cx="90" cy="59" rx="2.5" ry="2.5" fill="white"/>
+          <rect x="52" y="72" width="56" height="20" rx="4" fill="#2C2C2C"/>
+          <rect x="56" y="75" width="48" height="14" rx="3" fill="#383838"/>
+          <line x1="60" y1="80" x2="100" y2="80" stroke="#2C2C2C" stroke-width="2"/>
+          <line x1="60" y1="85" x2="100" y2="85" stroke="#2C2C2C" stroke-width="2"/>
+          <rect x="108" y="90" width="3" height="50" rx="1.5" fill="#C0C0C0" transform="rotate(18 108 90)"/>
+          <rect x="104" y="87" width="10" height="9" rx="3" fill="#D4AF37"/>
+          <path class="tail" d="M118 140 Q142 118 140 94 Q138 76 126 74 Q116 76 118 90 Q121 110 116 134 Z" fill="#E8954A"/>
+        </svg>
+      </div>
+      <div class="cat-name">Katsuro</div>
+      <div class="cat-rank">⚔️ Samurai Lord</div>
+      <p class="cat-desc">The mightiest warrior of Neko Dojo. Katsuro defeated 99 mice before retiring to guard the café. His honor is unbreakable — unless you bring tuna.</p>
+      <span class="cat-badge">Rank: Shogun</span>
+    </div>
+
+    <!-- NINJA -->
+    <div class="cat-card fi">
+      <div class="cat-art">
+        <svg width="160" height="160" viewBox="0 0 160 160">
+          <ellipse cx="80" cy="112" rx="44" ry="38" fill="#252525"/>
+          <ellipse cx="80" cy="108" rx="30" ry="26" fill="#111111"/>
+          <ellipse cx="80" cy="100" rx="30" ry="9" fill="#C0392B"/>
+          <ellipse cx="80" cy="60" rx="34" ry="32" fill="#303030"/>
+          <polygon points="50,46 41,20 62,36" fill="#303030"/>
+          <polygon points="110,46 119,20 98,36" fill="#303030"/>
+          <polygon points="52,44 44,24 60,36" fill="#222222"/>
+          <polygon points="108,44 116,24 100,36" fill="#222222"/>
+          <rect x="46" y="38" width="68" height="30" rx="5" fill="#111111"/>
+          <g class="eyes">
+            <ellipse cx="66" cy="54" rx="10" ry="9" fill="#0A0A0A"/>
+            <ellipse cx="94" cy="54" rx="10" ry="9" fill="#0A0A0A"/>
+            <ellipse cx="66" cy="54" rx="7" ry="6.5" fill="#00E676"/>
+            <ellipse cx="94" cy="54" rx="7" ry="6.5" fill="#00E676"/>
+            <ellipse cx="66" cy="54" rx="4" ry="4.5" fill="#003820"/>
+            <ellipse cx="94" cy="54" rx="4" ry="4.5" fill="#003820"/>
+          </g>
+          <ellipse cx="63" cy="51" rx="2" ry="2" fill="rgba(255,255,255,.65)"/>
+          <ellipse cx="91" cy="51" rx="2" ry="2" fill="rgba(255,255,255,.65)"/>
+          <rect x="52" y="68" width="56" height="20" rx="5" fill="#111111"/>
+          <!-- Shuriken -->
+          <g transform="translate(122,72) rotate(25)">
+            <polygon points="0,-11 3,-3 11,0 3,3 0,11 -3,3 -11,0 -3,-3" fill="#AAAAAA"/>
+            <circle cx="0" cy="0" r="3" fill="#888888"/>
+          </g>
+          <!-- Second shuriken -->
+          <g transform="translate(38,90) rotate(-15)">
+            <polygon points="0,-9 2.5,-2.5 9,0 2.5,2.5 0,9 -2.5,2.5 -9,0 -2.5,-2.5" fill="#AAAAAA" opacity=".7"/>
+          </g>
+          <path class="tail" d="M118 140 Q146 116 144 90 Q142 70 130 68 Q118 70 120 86 Q124 108 116 136 Z" fill="#252525"/>
+          <ellipse cx="80" cy="150" rx="38" ry="7" fill="rgba(0,0,0,.25)"/>
+        </svg>
+      </div>
+      <div class="cat-name">Kage</div>
+      <div class="cat-rank">🥷 Shadow Ninja</div>
+      <p class="cat-desc">You never see Kage coming. One moment the seat is empty — the next, a purring shadow is on your lap. Expert in the art of surprise cuddles and croissant theft.</p>
+      <span class="cat-badge">Rank: Jōnin</span>
+    </div>
+
+    <!-- CIVILIAN / CALICO -->
+    <div class="cat-card fi">
+      <div class="cat-art">
+        <svg width="160" height="160" viewBox="0 0 160 160">
+          <ellipse cx="80" cy="112" rx="44" ry="38" fill="#F5DEB3"/>
+          <ellipse cx="68" cy="108" rx="20" ry="17" fill="#E8954A" opacity=".65"/>
+          <ellipse cx="96" cy="118" rx="15" ry="13" fill="#2C1A08" opacity=".4"/>
+          <path d="M48,100 Q80,88 112,100 L116,150 L44,150 Z" fill="#FFB7C5" opacity=".65"/>
+          <ellipse cx="72" cy="118" rx="9" ry="5.5" fill="#FF6B9D"/>
+          <ellipse cx="88" cy="118" rx="9" ry="5.5" fill="#FF6B9D"/>
+          <ellipse cx="80" cy="118" rx="4" ry="4" fill="#C0392B"/>
+          <ellipse cx="80" cy="60" rx="34" ry="32" fill="#F5DEB3"/>
+          <ellipse cx="94" cy="50" rx="18" ry="14" fill="#E8954A" opacity=".55"/>
+          <polygon points="50,46 41,22 64,38" fill="#F5DEB3"/>
+          <polygon points="110,46 119,22 96,38" fill="#F5DEB3"/>
+          <polygon points="52,44 45,26 62,38" fill="#FFAABC"/>
+          <polygon points="108,44 115,26 98,38" fill="#FFAABC"/>
+          <!-- Hair bow -->
+          <ellipse cx="46" cy="26" rx="6" ry="4" fill="#FF6B9D" transform="rotate(-30 46 26)"/>
+          <ellipse cx="40" cy="22" rx="6" ry="4" fill="#FF6B9D" transform="rotate(-30 40 22)"/>
+          <ellipse cx="43" cy="24" rx="3" ry="3" fill="#C0392B"/>
+          <g class="eyes">
+            <ellipse cx="66" cy="60" rx="12" ry="13" fill="#1A1A1A"/>
+            <ellipse cx="94" cy="60" rx="12" ry="13" fill="#1A1A1A"/>
+            <ellipse cx="66" cy="60" rx="9" ry="10" fill="#5C8A5C"/>
+            <ellipse cx="94" cy="60" rx="9" ry="10" fill="#5C8A5C"/>
+            <ellipse cx="66" cy="60" rx="5" ry="6" fill="#0A0A0A"/>
+            <ellipse cx="94" cy="60" rx="5" ry="6" fill="#0A0A0A"/>
+          </g>
+          <ellipse cx="62" cy="55" rx="3" ry="3" fill="white"/>
+          <ellipse cx="90" cy="55" rx="3" ry="3" fill="white"/>
+          <ellipse cx="55" cy="70" rx="8" ry="5" fill="rgba(255,100,100,.28)"/>
+          <ellipse cx="105" cy="70" rx="8" ry="5" fill="rgba(255,100,100,.28)"/>
+          <ellipse cx="80" cy="73" rx="4" ry="3" fill="#FF9999"/>
+          <path d="M75,77 Q80,82 85,77" stroke="#FF9999" stroke-width="2" fill="none"/>
+          <line x1="38" y1="69" x2="68" y2="70" stroke="rgba(200,200,200,.75)" stroke-width="1"/>
+          <line x1="38" y1="74" x2="68" y2="73" stroke="rgba(200,200,200,.75)" stroke-width="1"/>
+          <line x1="92" y1="70" x2="122" y2="69" stroke="rgba(200,200,200,.75)" stroke-width="1"/>
+          <line x1="92" y1="73" x2="122" y2="74" stroke="rgba(200,200,200,.75)" stroke-width="1"/>
+          <path class="tail" d="M116 140 Q140 124 136 100 Q133 82 122 80 Q112 82 114 96 Q118 118 114 138 Z" fill="#F5DEB3"/>
+        </svg>
+      </div>
+      <div class="cat-name">Yuki</div>
+      <div class="cat-rank">🌸 Gentle Soul</div>
+      <p class="cat-desc">Yuki sits next to anyone who seems sad and gently headbutts their worries away. Favorite hobby: napping in sunbeams and stealing warmth from your coffee mug.</p>
+      <span class="cat-badge">Rank: Beloved</span>
+    </div>
+
+    <!-- SCHOLAR -->
+    <div class="cat-card fi">
+      <div class="cat-art">
+        <svg width="160" height="160" viewBox="0 0 160 160">
+          <ellipse cx="80" cy="114" rx="46" ry="38" fill="#F0F0F0"/>
+          <path d="M46,100 Q80,88 114,100 L118,155 L42,155 Z" fill="#ECECEC"/>
+          <path d="M46,112 Q80,102 114,112" stroke="#D4AF37" stroke-width="1" fill="none" opacity=".5"/>
+          <path d="M48,124 Q80,114 112,124" stroke="#D4AF37" stroke-width="1" fill="none" opacity=".5"/>
+          <path d="M50,136 Q80,126 110,136" stroke="#D4AF37" stroke-width="1" fill="none" opacity=".5"/>
+          <path d="M70,90 L80,88 L90,90 L90,108 Q80,115 70,108 Z" fill="#6B2FA0" opacity=".7"/>
+          <ellipse cx="80" cy="60" rx="34" ry="32" fill="#F8F8F8"/>
+          <polygon points="50,46 41,20 62,36" fill="#F8F8F8"/>
+          <polygon points="110,46 119,20 98,36" fill="#F8F8F8"/>
+          <polygon points="52,44 45,24 60,36" fill="#FFB0C0"/>
+          <polygon points="108,44 115,24 100,36" fill="#FFB0C0"/>
+          <!-- Glasses -->
+          <rect x="54" y="55" width="22" height="16" rx="8" fill="none" stroke="#D4AF37" stroke-width="2"/>
+          <rect x="84" y="55" width="22" height="16" rx="8" fill="none" stroke="#D4AF37" stroke-width="2"/>
+          <line x1="76" y1="63" x2="84" y2="63" stroke="#D4AF37" stroke-width="2"/>
+          <line x1="54" y1="63" x2="48" y2="60" stroke="#D4AF37" stroke-width="1.5"/>
+          <line x1="106" y1="63" x2="112" y2="60" stroke="#D4AF37" stroke-width="1.5"/>
+          <g class="eyes">
+            <ellipse cx="65" cy="63" rx="7" ry="6.5" fill="#2C4A8C"/>
+            <ellipse cx="95" cy="63" rx="7" ry="6.5" fill="#2C4A8C"/>
+            <ellipse cx="65" cy="63" rx="4" ry="4.5" fill="#1A2D5A"/>
+            <ellipse cx="95" cy="63" rx="4" ry="4.5" fill="#1A2D5A"/>
+          </g>
+          <ellipse cx="62" cy="60" rx="2" ry="2" fill="white"/>
+          <ellipse cx="92" cy="60" rx="2" ry="2" fill="white"/>
+          <polygon points="80,73 77,77 83,77" fill="#FFB0C0"/>
+          <!-- Scroll -->
+          <rect x="106" y="92" width="12" height="44" rx="6" fill="#FAE8C8" stroke="#D4AF37" stroke-width="1"/>
+          <rect x="104" y="89" width="16" height="8" rx="4" fill="#D4AF37"/>
+          <rect x="104" y="128" width="16" height="8" rx="4" fill="#D4AF37"/>
+          <line x1="108" y1="100" x2="118" y2="100" stroke="#8B6914" stroke-width=".8"/>
+          <line x1="108" y1="106" x2="118" y2="106" stroke="#8B6914" stroke-width=".8"/>
+          <line x1="108" y1="112" x2="118" y2="112" stroke="#8B6914" stroke-width=".8"/>
+          <line x1="108" y1="118" x2="118" y2="118" stroke="#8B6914" stroke-width=".8"/>
+          <path class="tail" d="M114 144 Q138 126 134 103 Q131 86 120 86 Q110 88 112 101 Q116 120 112 140 Z" fill="#F8F8F8"/>
+        </svg>
+      </div>
+      <div class="cat-name">Tōru</div>
+      <div class="cat-rank">📜 Wise Scholar</div>
+      <p class="cat-desc">Tōru has studied ancient cat wisdom for 500 years. He'll knock your book off the table and sit on it while maintaining eye contact. He contains multitudes.</p>
+      <span class="cat-badge">Rank: Onmyōji</span>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+<div class="container">
+  <div class="sec-head fi">
+    <span class="sec-tag">🍵 Our Menu</span>
+    <h2 class="sec-title">Crafted with <span class="hl">Japanese</span> Soul</h2>
+    <div class="divider"><div class="div-line"></div><span>🌸</span><div class="div-line"></div></div>
+  </div>
+  <div class="menu-grid">
+    <div class="menu-card fi">
+      <span class="m-icon">🍵</span>
+      <div><div class="m-name">Matcha Ceremony</div><div class="m-jp">抹茶の儀式</div></div>
+      <p class="m-desc">Traditional stone-ground matcha prepared tableside. Paired with wagashi sweets shaped like our resident cats. A moment of perfect stillness.</p>
+      <div class="m-price">¥850</div>
+    </div>
+    <div class="menu-card fi">
+      <span class="m-icon">☕</span>
+      <div><div class="m-name">Sakura Latte</div><div class="m-jp">桜ラテ</div></div>
+      <p class="m-desc">Espresso crowned with cherry blossom foam art. Each cup features a different Neko Dojo cat character crafted in steamed milk by our baristas.</p>
+      <div class="m-price">¥680</div>
+    </div>
+    <div class="menu-card fi">
+      <span class="m-icon">🍡</span>
+      <div><div class="m-name">Ninja Mochi Set</div><div class="m-jp">忍者餅セット</div></div>
+      <p class="m-desc">Three mochi — black sesame, strawberry, and yuzu — served on a bamboo platter with a tiny Kage figurine. Too adorable to eat (but please do).</p>
+      <div class="m-price">¥520</div>
+    </div>
+    <div class="menu-card fi">
+      <span class="m-icon">🍱</span>
+      <div><div class="m-name">Samurai Bento</div><div class="m-jp">武士弁当</div></div>
+      <p class="m-desc">A warrior's feast: onigiri, tamagoyaki, pickled vegetables, and miso soup — all arranged to honor Katsuro's legendary appetite for glory.</p>
+      <div class="m-price">¥1,200</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+<div class="container">
+  <div class="exp-grid">
+    <div class="fi">
+      <span class="sec-tag">🏮 The Atmosphere</span>
+      <h2 class="sec-title" style="text-align:left;">Step Into Another <span class="hl">World</span></h2>
+      <div class="divider" style="justify-content:flex-start;margin-left:0;">
+        <div class="div-line"></div><span>⛩️</span>
+      </div>
+      <ul class="exp-feats">
+        <li><span class="f-icon">🏯</span><span>Full Edo-period décor with shoji screens, tatami corners, and hanging scroll art featuring our cat legends</span></li>
+        <li><span class="f-icon">🎵</span><span>Original shamisen and koto soundtrack composed exclusively for Neko Dojo — peaceful, immersive, magical</span></li>
+        <li><span class="f-icon">🐾</span><span>All 42 cats are rescues with full veterinary care. You can discuss adoption — but they prefer ruling from here</span></li>
+        <li><span class="f-icon">📸</span><span>Dedicated photo corners with traditional Japanese props and patient cats (most of the time)</span></li>
+        <li><span class="f-icon">🎎</span><span>Monthly themed events: Samurai Training Day, Ninja Hide-and-Seek, Scholar's Study Night</span></li>
+      </ul>
+      <a href="#visit" class="btn-p">🏮 Plan Your Visit</a>
+    </div>
+    <div class="exp-scene fi">
+      <!-- Stylized café interior SVG -->
+      <svg width="400" height="400" viewBox="0 0 400 400" style="border-radius:20px;overflow:hidden;">
+        <rect width="400" height="400" fill="#0D0D20"/>
+        <!-- Floor tatami -->
+        <rect y="290" width="400" height="110" fill="#1A0E05"/>
+        <rect y="290" width="200" height="55" fill="#1F1208" stroke="#2A1A0A" stroke-width="1"/>
+        <rect x="200" y="290" width="200" height="55" fill="#1A0E05" stroke="#2A1A0A" stroke-width="1"/>
+        <rect y="345" width="200" height="55" fill="#1A0E05" stroke="#2A1A0A" stroke-width="1"/>
+        <rect x="200" y="345" width="200" height="55" fill="#1F1208" stroke="#2A1A0A" stroke-width="1"/>
+        <!-- Shoji wall -->
+        <rect width="400" height="290" fill="#0A0A18"/>
+        <rect x="15" y="15" width="88" height="210" rx="4" fill="rgba(240,220,170,.04)" stroke="rgba(240,220,170,.18)" stroke-width="1"/>
+        <rect x="113" y="15" width="88" height="210" rx="4" fill="rgba(240,220,170,.04)" stroke="rgba(240,220,170,.18)" stroke-width="1"/>
+        <rect x="211" y="15" width="88" height="210" rx="4" fill="rgba(240,220,170,.04)" stroke="rgba(240,220,170,.18)" stroke-width="1"/>
+        <rect x="309" y="15" width="76" height="210" rx="4" fill="rgba(240,220,170,.04)" stroke="rgba(240,220,170,.18)" stroke-width="1"/>
+        <!-- Shoji grid -->
+        <line x1="15" y1="82" x2="103" y2="82" stroke="rgba(240,220,170,.12)" stroke-width="1"/>
+        <line x1="15" y1="148" x2="103" y2="148" stroke="rgba(240,220,170,.12)" stroke-width="1"/>
+        <line x1="59" y1="15" x2="59" y2="225" stroke="rgba(240,220,170,.12)" stroke-width="1"/>
+        <line x1="113" y1="82" x2="201" y2="82" stroke="rgba(240,220,170,.12)" stroke-width="1"/>
+        <line x1="113" y1="148" x2="201" y2="148" stroke="rgba(240,220,170,.12)" stroke-width="1"/>
+        <line x1="157" y1="15" x2="157" y2="225" stroke="rgba(240,220,170,.12)" stroke-width="1"/>
+        <!-- Table -->
+        <rect x="75" y="258" width="250" height="12" rx="6" fill="#3D1F08"/>
+        <rect x="96" y="270" width="10" height="38" fill="#3D1F08"/>
+        <rect x="294" y="270" width="10" height="38" fill="#3D1F08"/>
+        <!-- Teapot -->
+        <ellipse cx="160" cy="254" rx="24" ry="17" fill="#C0392B"/>
+        <ellipse cx="160" cy="244" rx="14" ry="8" fill="#8B0000"/>
+        <circle cx="160" cy="241" r="4" fill="#D4AF37"/>
+        <path d="M184,250 Q194,246 192,256 Q190,263 184,260" fill="#C0392B" stroke="#8B0000" stroke-width="1"/>
+        <!-- Cup with steam -->
+        <ellipse cx="220" cy="257" rx="15" ry="9" fill="#F5E6D3"/>
+        <ellipse cx="220" cy="249" rx="15" ry="7" fill="white"/>
+        <ellipse cx="220" cy="249" rx="11" ry="5" fill="#C8EEC8"/>
+        <path d="M215,241 Q218,233 215,227" stroke="rgba(255,255,255,.28)" stroke-width="1.5" fill="none"/>
+        <path d="M221,239 Q224,231 221,225" stroke="rgba(255,255,255,.28)" stroke-width="1.5" fill="none"/>
+        <!-- Mini ninja cat on table -->
+        <ellipse cx="272" cy="253" rx="17" ry="13" fill="#202020"/>
+        <ellipse cx="272" cy="241" rx="13" ry="12" fill="#202020"/>
+        <polygon points="263,237 256,222 268,232" fill="#202020"/>
+        <polygon points="281,237 288,222 276,232" fill="#202020"/>
+        <ellipse cx="266" cy="241" rx="4.5" ry="4.5" fill="#00E676"/>
+        <ellipse cx="278" cy="241" rx="4.5" ry="4.5" fill="#00E676"/>
+        <ellipse cx="264" cy="239" rx="1.5" ry="1.5" fill="rgba(255,255,255,.6)"/>
+        <ellipse cx="276" cy="239" rx="1.5" ry="1.5" fill="rgba(255,255,255,.6)"/>
+        <!-- Hanging lanterns -->
+        <line x1="78" y1="0" x2="78" y2="48" stroke="rgba(212,175,55,.38)" stroke-width="1"/>
+        <ellipse cx="78" cy="62" rx="13" ry="21" fill="#C0392B"/>
+        <ellipse cx="78" cy="62" rx="8" ry="13" fill="rgba(255,180,100,.15)"/>
+        <text x="78" y="67" font-size="10" font-family="serif" fill="rgba(255,220,150,.5)" text-anchor="middle">猫</text>
+        <line x1="200" y1="0" x2="200" y2="38" stroke="rgba(212,175,55,.38)" stroke-width="1"/>
+        <ellipse cx="200" cy="52" rx="11" ry="17" fill="#D4AF37"/>
+        <ellipse cx="200" cy="52" rx="7" ry="11" fill="rgba(255,200,50,.2)"/>
+        <line x1="322" y1="0" x2="322" y2="48" stroke="rgba(212,175,55,.38)" stroke-width="1"/>
+        <ellipse cx="322" cy="62" rx="13" ry="21" fill="#C0392B"/>
+        <ellipse cx="322" cy="62" rx="8" ry="13" fill="rgba(255,180,100,.15)"/>
+        <!-- Scroll on back wall -->
+        <rect x="145" y="35" width="110" height="130" rx="3" fill="#FAE8C8" opacity=".72"/>
+        <rect x="140" y="32" width="120" height="10" rx="5" fill="#8B6914"/>
+        <rect x="140" y="158" width="120" height="10" rx="5" fill="#8B6914"/>
+        <text x="200" y="88" font-family="serif" font-size="30" fill="#1A0A00" text-anchor="middle" opacity=".65">猫</text>
+        <text x="200" y="124" font-family="serif" font-size="30" fill="#1A0A00" text-anchor="middle" opacity=".65">道</text>
+        <text x="200" y="155" font-family="serif" font-size="22" fill="#1A0A00" text-anchor="middle" opacity=".65">場</text>
+      </svg>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+<div class="container">
+  <div class="sec-head fi">
+    <span class="sec-tag">💬 Guest Reviews</span>
+    <h2 class="sec-title">Loved by <span class="hl">Cat Devotees</span></h2>
+    <div class="divider"><div class="div-line"></div><span>🐾</span><div class="div-line"></div></div>
+  </div>
+  <div class="test-grid">
+    <div class="test-card fi">
+      <div class="stars">★★★★★</div>
+      <p class="test-txt">"I came for the matcha, I stayed for Katsuro. That samurai cat sat on my lap for two hours and stared at me with such gravitas I genuinely reconsidered my life choices. Absolutely transformative. 11/10."</p>
+      <div class="test-author">
+        <div class="t-avatar">🌸</div>
+        <div><div class="t-name">Aiko Tanaka</div><div class="t-loc">Tokyo, Japan</div></div>
+      </div>
+    </div>
+    <div class="test-card fi">
+      <div class="stars">★★★★★</div>
+      <p class="test-txt">"Kage the ninja cat appeared out of nowhere, stole my croissant without making a sound, and vanished. I have never been more impressed by anyone in my life. The Sakura Latte was also excellent."</p>
+      <div class="test-author">
+        <div class="t-avatar">🏯</div>
+        <div><div class="t-name">Marcus Webb</div><div class="t-loc">London, UK</div></div>
+      </div>
+    </div>
+    <div class="test-card fi">
+      <div class="stars">★★★★★</div>
+      <p class="test-txt">"Tōru knocked my manga off the table and sat on it, maintaining eye contact. He knew exactly what he was doing. The décor is gorgeous, the staff wonderful. My weekly sanctuary."</p>
+      <div class="test-author">
+        <div class="t-avatar">📜</div>
+        <div><div class="t-name">Priya Sharma</div><div class="t-loc">Osaka, Japan</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- VISIT -->
+<section id="visit">
+<div class="container">
+  <div class="sec-head fi">
+    <span class="sec-tag">📍 Find Us</span>
+    <h2 class="sec-title">Come <span class="hl">Visit</span> the Dojo</h2>
+    <div class="divider"><div class="div-line"></div><span>⛩️</span><div class="div-line"></div></div>
+  </div>
+  <div class="visit-grid">
+    <div class="fi">
+      <div class="info-card">
+        <h4>🕐 Hours of Operation</h4>
+        <ul class="hours">
+          <li><span class="day">Monday – Tuesday</span><span style="color:rgba(255,255,255,.4);">Closed · Training Day</span></li>
+          <li><span class="day">Wednesday – Friday</span><span>11:00 – 21:00</span></li>
+          <li><span class="day">Saturday</span><span>10:00 – 22:00</span></li>
+          <li><span class="day">Sunday</span><span>10:00 – 20:00</span></li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h4>📍 Location</h4>
+        <p style="font-size:.88rem;color:rgba(255,255,255,.58);line-height:1.75;">
+          2-chome-12-8 Neko Alley<br>Shibuya District<br>Tokyo, Japan 150-0001<br><br>
+          <strong style="color:var(--gold);">3 min walk from Shibuya Station (Exit A5)</strong>
+        </p>
+      </div>
+      <div class="info-card">
+        <h4>📞 Reservations</h4>
+        <p style="font-size:.88rem;color:rgba(255,255,255,.58);line-height:1.75;margin-bottom:1.2rem;">
+          Walk-ins welcome. Reservations recommended on weekends.<br>
+          Entry: ¥600/hour · Menu items ordered separately.
+        </p>
+        <a href="#" class="btn-p" style="font-size:.85rem;">Book a Table</a>
+      </div>
+    </div>
+    <div class="fi">
+      <div class="map-wrap">
+        <svg width="100%" viewBox="0 0 420 340" xmlns="http://www.w3.org/2000/svg">
+          <rect width="420" height="340" fill="#0D0D20"/>
+          <!-- Streets -->
+          <rect x="0" y="148" width="420" height="14" fill="#1A1A35"/>
+          <rect x="188" y="0" width="14" height="340" fill="#1A1A35"/>
+          <rect x="0" y="220" width="420" height="10" fill="#1A1A35"/>
+          <rect x="105" y="0" width="10" height="340" fill="#1A1A35"/>
+          <rect x="308" y="0" width="10" height="340" fill="#1A1A35"/>
+          <!-- Blocks -->
+          <rect x="117" y="12" width="69" height="134" rx="4" fill="#141428"/>
+          <rect x="202" y="12" width="104" height="134" rx="4" fill="#141428"/>
+          <rect x="117" y="162" width="69" height="56" rx="4" fill="#141428"/>
+          <rect x="202" y="162" width="104" height="56" rx="4" fill="#141428"/>
+          <!-- Marker -->
+          <circle cx="226" cy="148" r="14" fill="#C0392B" opacity=".92"/>
+          <circle cx="226" cy="148" r="7" fill="white"/>
+          <circle cx="226" cy="148" r="3.5" fill="#C0392B"/>
+          <circle cx="226" cy="148" r="22" fill="none" stroke="#C0392B" stroke-width="1.5" opacity=".5">
+            <animate attributeName="r" from="14" to="38" dur="2.2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" from=".5" to="0" dur="2.2s" repeatCount="indefinite"/>
+          </circle>
+          <!-- Label -->
+          <rect x="240" y="128" width="82" height="28" rx="5" fill="#C0392B"/>
+          <text x="281" y="147" font-family="sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="700">Neko Dojo</text>
+          <!-- Station -->
+          <circle cx="145" cy="186" r="10" fill="#D4AF37"/>
+          <text x="145" y="190" font-family="sans-serif" font-size="9" fill="#0A0A0A" text-anchor="middle" font-weight="800">S</text>
+          <text x="145" y="202" font-family="sans-serif" font-size="8" fill="rgba(255,255,255,.4)" text-anchor="middle">Shibuya</text>
+          <!-- Labels -->
+          <text x="60" y="142" font-family="sans-serif" font-size="8" fill="rgba(255,255,255,.2)" text-anchor="middle">Neko Ave</text>
+          <text x="195" y="80" font-family="sans-serif" font-size="8" fill="rgba(255,255,255,.2)" text-anchor="middle" transform="rotate(-90 195 80)">Sakura St</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="footer-inner">
+  <div class="footer-grid">
+    <div>
+      <div class="f-brand">猫道場 <span>Neko</span></div>
+      <p class="f-tagline">Where legendary cats meet excellent coffee. A sanctuary of whiskers, warrior spirits, and warm matcha in the heart of Tokyo.</p>
+      <div class="socials">
+        <a href="#" class="soc-btn">𝕏</a>
+        <a href="#" class="soc-btn">📸</a>
+        <a href="#" class="soc-btn">▶</a>
+        <a href="#" class="soc-btn">💬</a>
+      </div>
+    </div>
+    <div class="f-col">
+      <h5>Visit</h5>
+      <ul class="f-links">
+        <li><a href="#cats">Our Cats</a></li>
+        <li><a href="#menu">The Menu</a></li>
+        <li><a href="#experience">Atmosphere</a></li>
+        <li><a href="#visit">Hours & Location</a></li>
+        <li><a href="#">Reserve a Table</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h5>Explore</h5>
+      <ul class="f-links">
+        <li><a href="#">Cat Stories</a></li>
+        <li><a href="#">Events Calendar</a></li>
+        <li><a href="#">Adoption Info</a></li>
+        <li><a href="#">Press & Media</a></li>
+        <li><a href="#">Gift Cards</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h5>Legal</h5>
+      <ul class="f-links">
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Cat Welfare Policy</a></li>
+        <li><a href="#">Accessibility</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Neko Dojo · All rights reserved · 猫道場</p>
+    <div class="f-jp">猫 道 場 侍 忍</div>
+    <p>Made with 🐾 in Tokyo</p>
+  </div>
+</div>
+</footer>
+
+<script>
+// SAKURA PETALS
+const sakura = document.getElementById('sakura');
+const colors = ['#FFB7C5','#FFC4D0','#FFD1DC','#FF99B4','#FFADC7','#FFE4EC'];
+function spawnPetal(){
+  const p = document.createElement('div');
+  p.className = 'petal';
+  const sz = Math.random()*10+5;
+  const dur = Math.random()*9+7;
+  const delay = Math.random()*3;
+  p.style.cssText = `left:${Math.random()*100}vw;width:${sz}px;height:${sz}px;
+    background:${colors[Math.floor(Math.random()*colors.length)]};
+    animation-duration:${dur}s;animation-delay:${delay}s;
+    opacity:${Math.random()*.5+.25};
+    border-radius:${Math.random()>.5?'0 50% 0 50%':'50% 0 50% 0'};`;
+  sakura.appendChild(p);
+  setTimeout(()=>p.remove(),(dur+delay)*1000);
+}
+for(let i=0;i<18;i++) setTimeout(spawnPetal,i*220);
+setInterval(spawnPetal,500);
+
+// SCROLL FADE-IN
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const siblings=[...e.target.parentElement.querySelectorAll('.fi')];
+      const idx=siblings.indexOf(e.target);
+      setTimeout(()=>e.target.classList.add('vis'),idx*100);
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fi').forEach(el=>io.observe(el));
+
+// NAVBAR SCROLL
+const nb=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{
+  nb.style.background=window.scrollY>80?'rgba(10,10,20,.97)':'rgba(10,10,20,.88)';
+  nb.style.borderBottomColor=window.scrollY>80?'rgba(212,175,55,.32)':'rgba(212,175,55,.2)';
+},{passive:true});
+
+// HERO PARALLAX
+const heroInner=document.querySelector('.hero-inner');
+window.addEventListener('scroll',()=>{
+  if(!heroInner) return;
+  const s=window.scrollY;
+  heroInner.style.transform=`translateY(${s*.28}px)`;
+  heroInner.style.opacity=Math.max(0,1-s*.0018);
+},{passive:true});
+
+// HAMBURGER MENU
+let menuOpen=false;
+function toggleMenu(){
+  menuOpen=!menuOpen;
+  const nl=document.querySelector('.nav-links');
+  if(menuOpen){
+    nl.style.cssText='display:flex;flex-direction:column;position:fixed;top:65px;left:0;width:100%;background:rgba(10,10,20,.98);padding:2rem;gap:1.5rem;z-index:999;';
+  } else {
+    nl.style.cssText='display:none;';
+  }
+}
+
+// CAT CARD GLOW
+document.querySelectorAll('.cat-card').forEach(c=>{
+  c.addEventListener('mouseenter',()=>{
+    c.style.boxShadow='0 25px 70px rgba(192,57,43,.22),0 0 32px rgba(212,175,55,.09)';
+  });
+  c.addEventListener('mouseleave',()=>{ c.style.boxShadow=''; });
+});
+
+// STAGGER HERO ENTRANCE
+const seq=['.hero-badge','.hero-title','.hero-sub','.hero-btns','.hero-stats'];
+seq.forEach((sel,i)=>{
+  const el=document.querySelector(sel);
+  if(!el) return;
+  el.style.opacity='0';
+  el.style.transform='translateY(24px)';
+  setTimeout(()=>{
+    el.style.transition='opacity .8s ease, transform .8s ease';
+    el.style.opacity='1';
+    el.style.transform='translateY(0)';
+  },200+i*160);
+});
+</script>
+</body>
+</html>
