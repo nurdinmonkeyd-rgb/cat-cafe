@@ -1,0 +1,192 @@
+==============================================================
+SITE: Steel Empire — Heavy Duty Auto Parts
+==============================================================
+
+ROLE / CONTEXT
+--------------
+Role: Lead Developer & Architect for a premium, old-school auto parts warehouse.
+Context: "Steel Empire" is not a sleek, modern e-commerce site. It is a digital
+extension of a dusty, trusted, grandfather's garage. The inventory is DEEP:
+every nut, bolt, gasket, and panel for a vast range of vehicles.
+The user journey is specific: Pick Make -> Pick Model -> Browse Categories -> See Parts.
+This is a haven for gearheads, mechanics, and restoration enthusiasts.
+
+PURPOSE
+-------
+To provide a comprehensive, searchable, and visually immersive catalog of auto parts.
+The site must feel robust, reliable, and slightly gritty. The navigation must
+handle a deep hierarchical structure (Make > Model > Category > Subcategory/Part).
+
+
+==============================================================
+STEP 2 — BRAND VOICE (for `brand` skill)
+==============================================================
+Voice archetype: The Seasoned Mechanic — Knowledgeable, direct, no-BS, but deeply
+trustworthy. Speaks in short, declarative sentences. Calls parts by their proper names.
+
+Tone dimensions:
+- Formal ↔ Casual: 2 (Professional but plain-spoken)
+- Serious ↔ Playful: 2 (Serious about quality, slight dry wit)
+- Reserved ↔ Expressive: 3 (Firm opinions on steel quality)
+
+Voice rules:
+- NEVER use "leverage" or "synergy." Use "torque," "fit," and "spec."
+- Use imperial and metric measurements together.
+- Address the user as "you" — "Find what fits your rig."
+
+Tagline: "Forged in Steel. Fitted in the Garage."
+Key Phrases: "Know Your Specs," "American Muscle, Euro Precision," "Built to Torque."
+
+
+==============================================================
+STEP 3 — DESIGN SYSTEM (for `ui-ux-pro-max` + `design-system`)
+==============================================================
+Style keywords: Brutalist Garage, Dark Industrial, Worn Leather, High Contrast,
+Oil & Steel. Think: dimly lit workshop with a single bright work light over the engine.
+
+GLOBAL COLOR SYSTEM (Base):
+- Background: Deep Charcoal / Blackish-Brown (#12100E, #1A1814)
+- Surface-raised: Dark Muted Brown / Gunmetal (#2A2622, #2C2E30)
+- Ink (Text): Off-White / Warm Amber Light (#F5F2E9, #E8D5A3)
+- Global Accent (CTAs, Highlights): Industrial Yellow (#D49A0A, #F2B705) — like a hazard stripe.
+
+VISUAL ACCENTS:
+- Borders: Use 1px solid borders with low opacity (#FFFFFF10) to separate parts grids.
+- Texture: Use a subtle noise filter over the background (CSS `::before` with SVG noise)
+  to simulate the grit of a garage floor.
+- Icons: Use heavy, solid icons (Lucide: Wrench, Gauge, Cog, Fuel, Battery).
+
+TYPOGRAPHY:
+- Display (Headlines): "Bebas Neue" or "Oswald" — Condensed, bold, industrial.
+- Body (Text): "Inter" or "Source Sans Pro" — Highly readable, neutral, no-nonsense.
+- Code/Data (Specs): "Space Mono" or "Courier New" — Monospaced for technical specs.
+
+SPACING & RADII:
+- Container max-width: 1600px (wide for parts grids).
+- Card Radius: 4px (md) — sharp, mechanical corners. Buttons can be slightly rounded (8px).
+- Spacing: Tight and efficient. Grid gap: 16px (mobile), 24px (desktop).
+
+
+==============================================================
+STEP 4 — REFERENCE SCRAPE (for Firecrawl) [OPTIONAL]
+==============================================================
+Reference URL: https://www.rockauto.com (Scrape the hierarchical catalog structure:
+How they organize Make -> Model -> Category -> Part. Do not copy the UI, just the logic.)
+
+
+==============================================================
+STEP 5 — SECTIONS & LAYOUT (for Stitch)
+==============================================================
+This is a dynamic app, not a static 10-section landing page. The structure is based on
+the user's navigation path.
+
+1. Hero / Homepage:
+   - Massive, bold title: "STEEL EMPIRE."
+   - Subtitle: "Industrial Grade Parts. No Middleman Markup."
+   - Primary CTA: "Find Parts for Your Vehicle" (jumps to Make selector).
+   - Featured Makes Grid: 10 Brand Logos (Ford, Chevy, Toyota, Honda, BMW, Mercedes, etc.)
+     using colored placeholders with the brand name.
+
+2. Make Selector (Homepage or Modal):
+   - Grid of 10 Manufacturers.
+   - Clicking a Make filters the view or navigates to a dedicated Make page.
+
+3. Model Selector (Dynamic Page: `/[make]`):
+   - Grid of up to 10 Models for that Make (e.g., Ford: F-150, Mustang, Explorer, Escape...).
+   - Each Model card shows a placeholder image and Model Name.
+
+4. Parts Category Dashboard (Dynamic Page: `/[make]/[model]`):
+   - Header: "Shop Parts for [Model Year Range]".
+   - Grid of Part Categories (Icons + Images):
+     1. Brakes (Pads, Rotors, Calipers)
+     2. Engine (Gaskets, Pistons, Timing Chains, Belts)
+     3. Suspension (Struts, Shocks, Control Arms, Tie Rods)
+     4. Electrical (Alternators, Starters, Batteries, Sensors)
+     5. Exhaust (Manifolds, Catalytic Converters, Mufflers)
+     6. Cooling (Radiators, Water Pumps, Thermostats)
+     7. Drivetrain (Axles, CV Joints, Differentials)
+     8. Body & Lamps (Headlights, Taillights, Bumpers, Fenders)
+     9. Filters (Oil, Air, Fuel, Cabin)
+     10. Wipers & Glass
+
+5. Parts Listing Page (Dynamic Page: `/[make]/[model]/[category]`):
+   - Grid of 5-10 specific parts or part series.
+   - Example Category "Brakes": Ceramic Brake Pad Set, Performance Drilled Rotor, etc.
+   - Each part shows: Image (placeholder), Name, Short Spec, Price Range, "View Details".
+
+6. Part Detail Page (Dynamic Page: `/[make]/[model]/[category]/[part]`):
+   - Full specs (Material, Size, Fitment notes, Warranty).
+   - "Check Fitment" button (simulated).
+
+
+==============================================================
+STEP 6 — IMAGERY (for Nano Banana 2 / Placeholders)
+==============================================================
+Global art direction: Product photography on a white/grey background with harsh
+direct flash (like a shop camera). No humans. Clear, visible part details.
+
+CRITICAL DATA STRUCTURE REQUIREMENT:
+Generate placeholder images using `placehold.co` that reflect the BRAND STYLE.
+- Background Color: `2A2622` (Gunmetal)
+- Text Color: `F2B705` (Industrial Yellow)
+
+Naming convention: Use descriptive filenames.
+
+Image Generation Prompts (If API available, use these; otherwise use placeholders as described):
+- Make Logos (10): "Minimalist badge logo for [MAKE] in industrial yellow on dark steel background."
+- Parts: "Studio photograph of a [PART NAME] on a dark workshop bench, harsh light, high contrast, 4k detail."
+
+Placeholder Strategy (Exact requirements):
+- Makes: `https://placehold.co/300x200/2A2622/F2B705?text=FORD`
+- Models: `https://placehold.co/400x300/2A2622/F2B705?text=F-150`
+- Categories: `https://placehold.co/400x300/2A2622/F2B705?text=BRAKES`
+- Parts: `https://placehold.co/300x300/2A2622/F2B705?text=BRAKE+PAD`
+
+
+==============================================================
+STEP 7 — BRAND ASSETS (for `design` skill)
+==============================================================
+LOGO brief:
+- Concept: A heavy, geometric emblem. A hexagonal bolt head with "STEEL" inside
+  and a wrench crossed over it.
+- Wordmark: "STEEL EMPIRE" in Bebas Neue or Oswald.
+- Favicon: A single yellow hex bolt.
+
+ICON SET (SVG, Custom for Categories):
+- Engine: Piston/Crankshaft
+- Brakes: Caliper/Disc
+- Suspension: Shock/Spring
+- Electrical: Battery/Lightning
+- Exhaust: Muffler/Smoke wave
+
+
+==============================================================
+STEP 8 — INTERACTIVE COMPONENTS (for `ui-styling` / shadcn)
+==============================================================
+Required shadcn/ui primitives:
+- Tabs (For switching between "Shop by Vehicle" and "Shop by Category")
+- Command (Search bar with auto-complete for Part Numbers)
+- Breadcrumb (Make > Model > Category > Part)
+- Accordion (FAQ / Fitment details)
+- Card (Parts listing)
+- Badge (In Stock, Special Order, OEM)
+
+Interaction states:
+- Hover: Cards lift slightly with a yellow border-left.
+- Focus: Yellow outline.
+- Loading: A spinning gear or wrench animation.
+
+DATA LAYER REQUIREMENT (src/lib/site-data.ts):
+The site must be built with a robust data layer. The `makes` array must contain:
+- Make ID, Name, Image URL.
+- `models` array containing: Model ID, Name, Image URL, Year Range.
+- The `parts` array must be nested or filtered by model ID.
+
+Example structure for `ford`:
+{
+  id: "ford",
+  name: "Ford",
+  models: [
+    { id: "f150", name: "F-150", years: "2015-2024", image: "...", categories: ["brakes", "engine"] }
+  ]
+}
